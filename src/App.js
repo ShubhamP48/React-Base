@@ -1,23 +1,62 @@
 import logo from './logo.svg';
 import './App.css';
+import DynamicCrudBaseView from './components/demo-compenent/BaseCrud';
 
 function App() {
+  const fieldDefinitions = [
+    {
+      name: "firstName",
+      label: "First Name",
+      type: "text",
+    },
+    {
+      name: "lastName",
+      label: "Last Name",
+      type: "text",
+    },
+    {
+      name: "email",
+      label: "Email",
+      type: "email",
+    },
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+    },
+    {
+      name: "age",
+      label: "Age",
+      type: "number",
+    },
+    {
+      name: "birthday",
+      label: "Birthday",
+      type: "date",
+    },
+    {
+      name: "newsletter",
+      label: "Subscribe to Newsletter",
+      type: "checkbox",
+    },
+  ];
+
+  const initialValues = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    age: "",
+    birthday: "",
+    newsletter: false,
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DynamicCrudBaseView
+        initialValues={initialValues}
+        fieldDefinitions={fieldDefinitions}
+      />
     </div>
   );
 }

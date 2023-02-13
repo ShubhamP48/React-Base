@@ -8,8 +8,8 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div style={{display: "grid", justifyItems:"center"}} >
+      <h2 style={{padding: '3rem'}}>Login</h2>
       <LoginForm handleLogin={handleLogin} />
     </div>
   );

@@ -1,11 +1,10 @@
 import './App.css';
-import Users from "./components/demo-compenent/MainCrud"
-// import LoginPage from './components/TypeBaseForm/LoginPage';
+import LoginPage from './components/demo-compenent/TypeBaseForm/LoginPage.tsx';
 
 function App() {
   return (
     <div className="App">
-      <Users />
+      <LoginPage />
     </div>
   );
 }

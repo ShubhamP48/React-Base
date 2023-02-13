@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Field {
   label: string;
@@ -11,30 +11,34 @@ interface Field {
 interface Props {
   fields: Field[];
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  elementClasses: { 
+    formContainer: string; 
+    fieldContainer: string;
+    fieldInput: string;
+    submitButton: string;
+  };
 }
 
-const BaseForm: React.FC<Props> = ({ fields, handleSubmit }) => {
+const BaseForm: React.FC<Props> = ({ fields, handleSubmit, elementClasses }) => {
   return (
-    <div   className='p-12 shadow-sm bg-white rounded w-50'>
-      <form onSubmit={handleSubmit}  className='form w-100' id='kt_login_signin_form'>
+      <form onSubmit={handleSubmit} className={elementClasses.formContainer}>
         {fields.map(field => (
-          <div key={field.name} style={{display: "grid", justifyItems:"left"}} className='fv-row mb-10'>
-            <label htmlFor={field.name} className='form-label fs-6 fw-bolder  text-left text-dark'>{field.label}</label>
+          <div key={field.name} className={elementClasses.fieldContainer}>
             <input
               id={field.name}
               type={field.type}
               name={field.name}
               value={field.value}
               onChange={field.onChange}
-              className='form-control form-control-lg form-control-solid'
+              className={elementClasses.fieldInput}
+              placeholder={field.label}
             />
           </div>
         ))}
-        <button 
-            id='kt_sign_in_submit'
-            className='btn btn-lg btn-primary w-100 mb-5' type="submit">Submit</button>
+        <div className={elementClasses.fieldContainer}>
+          <button className={elementClasses.submitButton} type="submit">Submit</button>
+        </div>
       </form>
-    </div>
   );
 };
 

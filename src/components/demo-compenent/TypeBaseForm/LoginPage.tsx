@@ -8,9 +8,9 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div style={{display: "grid", justifyItems:"center"}} >
-      <h2 style={{padding: '3rem'}}>Login</h2>
-      <LoginForm handleLogin={handleLogin} />
+    <div className='container bg-subtle'>
+      <h2 className='row justify-content-center'>Login</h2>
+      <LoginForm className='row justify-content-center w-50' handleLogin={handleLogin} />
     </div>
   );
 };

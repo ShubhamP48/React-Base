@@ -3,9 +3,10 @@ import BaseForm from './BaseForm';
 
 interface LoginFormProps {
   handleLogin: (values: { email: string; password: string }) => void;
+  className: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ handleLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,7 +34,18 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin }) => {
     },
   ];
 
-  return <BaseForm fields={fields} handleSubmit={handleSubmit} />;
+  const formClasses = {
+    formContainer: 'container p-6',
+    fieldContainer: 'row p-3',
+    fieldInput: 'form-control',
+    submitButton: 'btn btn-primary',
+  }
+
+  return (
+    <div className={`container shadow-sm p-0 m-0${className}`}>
+      <BaseForm elementClasses={formClasses} fields={fields} handleSubmit={handleSubmit} />
+    </div>
+  );
 };
 
 export default LoginForm;

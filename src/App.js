@@ -1,4 +1,3 @@
-import './App.css';
 import LoginPage from './components/demo-compenent/TypeBaseForm/LoginPage.tsx';
 
 function App() {

@@ -23,6 +23,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) =>
       value: email,
       onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
         setEmail(event.target.value),
+      classes: {
+        container: 'row p-3',
+        input: 'form-control'
+      }
     },
     {
       label: 'Password',
@@ -31,19 +35,22 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) =>
       value: password,
       onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
         setPassword(event.target.value),
-    },
+      classes: {
+        container: 'row p-3',
+        input: 'form-control'
+      }
+    }, 
   ];
 
   const formClasses = {
     formContainer: 'container p-6',
-    fieldContainer: 'row p-3',
-    fieldInput: 'form-control',
+    buttonContainer: 'row p-3',
     submitButton: 'btn btn-primary',
   }
 
   return (
     <div className={`container shadow-sm p-0 m-0${className}`}>
-      <BaseForm elementClasses={formClasses} fields={fields} handleSubmit={handleSubmit} />
+      <BaseForm elementClasses={formClasses} fields={fields} handleSubmit={handleSubmit} btnText='Continue'/>
     </div>
   );
 };

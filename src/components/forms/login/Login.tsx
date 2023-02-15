@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BaseForm from './BaseForm';
+import DynamicForm from '../base/BaseForm';
 
 interface LoginFormProps {
   handleLogin: (values: { email: string; password: string }) => void;
@@ -15,7 +15,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) =>
     handleLogin({ email, password });
   };
 
-  const fields = [
+   const fields = [
     {
       label: 'Email',
       type: 'email',
@@ -42,6 +42,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) =>
     }, 
   ];
 
+  const initialValues = {
+    email: "",
+    password: ""
+};
+
   const formClasses = {
     formContainer: 'container p-6',
     buttonContainer: 'row p-3',
@@ -50,7 +55,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleLogin, className = "" }) =>
 
   return (
     <div className={`container shadow-sm p-0 m-0${className}`}>
-      <BaseForm elementClasses={formClasses} fields={fields} handleSubmit={handleSubmit} btnText='Continue'/>
+      <DynamicForm elementClasses={formClasses} initialValues={initialValues} fieldDefinitions={fields} handleSubmit={handleSubmit} />
     </div>
   );
 };

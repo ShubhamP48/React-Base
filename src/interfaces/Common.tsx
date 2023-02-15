@@ -2,6 +2,7 @@ import {FormEvent} from "react";
 
 
 export interface BaseFormFieldDefinitions {
+    classes: any;
     label: string;
     type: string;
     name: string;

@@ -5,6 +5,7 @@ export interface BaseFormFieldDefinitions {
     label: string;
     type: string;
     name: string;
+    classes: {input:string, container:string}
 }
 
   

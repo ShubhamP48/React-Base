@@ -1,8 +1,8 @@
-import LoginPage from './components/demo-compenent/TypeBaseForm/LoginPage.tsx';
+import LoginPage from './components/forms/LoginPage';
 
 function App() {
   return (
-      <LoginPage />
+    <LoginPage />
   );
 }
 

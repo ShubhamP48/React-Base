@@ -5,4 +5,5 @@ import {BaseFormFieldDefinitions, InitialValues} from './Common'
     fieldDefinitions: BaseFormFieldDefinitions[];
     initialValues: InitialValues;
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    submitBtnClass: string;
   }

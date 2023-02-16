@@ -8,8 +8,9 @@ const LoginPage = () => {
             label: "Email",
             type: "email",
             classes: {
-                container: 'p-3',
-                input: 'form-control'
+                container: 'my-5',
+                input: 'form-control',
+                label: "fw-bolder py-5"
             },
         },
         {
@@ -17,8 +18,9 @@ const LoginPage = () => {
             label: "Password",
             type: "password",
             classes: {
-                container: 'p-3',
-                input: 'form-control'
+                container: 'my-5',
+                input: 'form-control',
+                label: "fw-bolder py-5"
             }
         }
     ];
@@ -32,19 +34,18 @@ const LoginPage = () => {
     const [showForm, setShowForm] = useState(false);
 
     const handleSubmit = (values) => {
-        setFormData(initialValues);
-        setShowForm(false);
+        console.log(values)
     };
 
     return (
-        <>
+        <div>
             <LoginForm
                 fieldDefinitions={fieldDefinitions}
                 formData={formData}
                 showForm={showForm}
                 handleSubmit={handleSubmit}
             />
-        </>
+        </div>
     );
 };
 

@@ -48,7 +48,7 @@ const FormBase: FC<BaseFormProps> = ({
         <Form>
           {fieldDefinitions.map((field, index) => (
             <div key={index} className={field.classes.container}>
-              <label htmlFor={field.name}>{field.label}</label>
+              <label className={field.classes.label} htmlFor={field.name}>{field.label}</label>
               {field.type === "checkbox" ? (
                 <Field
                   type={field.type}
@@ -73,9 +73,9 @@ const FormBase: FC<BaseFormProps> = ({
               {errors[field.name] && <span><>{errors[field.name]}</></span>}
             </div>
           ))}
-          <div>
-          <button className={submitBtnClass} type="submit">Save</button>
-          </div>
+            <div className="d-grid gap-2">
+                <button className={submitBtnClass} type="submit">Save</button>
+            </div>
         </Form>
       )}
     </Formik>

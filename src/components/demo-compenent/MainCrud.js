@@ -32,12 +32,12 @@ const Users = () => {
             {
                 Header: 'Update',
                 accessor: 'update',
-                Cell: cellObj => <MyModal title="Update entry" mainButtonText="Update" launchButtonText="Update" action={handleUpdate(cellObj.row)} />,
+                Cell: cellObj => <MyModal title="Update entry" mainButtonText="Update" launchButtonText="Update" action={() => {handleUpdate(cellObj.row)}} />,
             },
             {
                 Header: 'Delete',
                 accessor: 'id',
-                Cell: cellObj => <MyModal title="Delete entry" mainButtonText="Delete" launchButtonText="Delete" action={handleDelete(cellObj.row)} />,
+                Cell: cellObj => <MyModal title="Delete entry" mainButtonText="Delete" launchButtonText="Delete" action={() => {handleDelete(cellObj.row)}} />,
             },
             {
                 Header: 'Newsletter',
@@ -57,7 +57,7 @@ const Users = () => {
             status: "relationship",
             subRows: undefined,
             visits: 40,
-            newsletter: "false"
+            newsletter: false
         }, {
             id: 1,
             age: 5,
@@ -67,7 +67,7 @@ const Users = () => {
             status: "relationship",
             subRows: undefined,
             visits: 40,
-            newsletter: "false"
+            newsletter: false
         }
     ], [])
 

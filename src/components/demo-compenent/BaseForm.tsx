@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { BaseFormProps } from '../../interfaces';
+import MyModal from "../forms/MyModal";
 
 const DynamicForm: FC<BaseFormProps> = ({ 
   fieldDefinitions,
@@ -38,6 +39,14 @@ const DynamicForm: FC<BaseFormProps> = ({
     }, {}),
   });
 
+  const getValueString = (values: any) => {
+    let result = "";
+    for (let props in values) {
+      result += `${props}: ${values[props]} '\n'`
+    }
+    return result;
+  }
+
   return (
     <Formik
       initialValues={initialValues}
@@ -71,7 +80,11 @@ const DynamicForm: FC<BaseFormProps> = ({
               {errors[field.name] && <span><>{errors[field.name]}</></span>}
             </div>
           ))}
-          <button type="submit">Save</button>
+          <MyModal title="Confirm Update" mainButtonText="Update" action={() => { handleSubmit() }} launchButtonText="Save">
+            {
+              getValueString(values)
+            }
+          </MyModal>
         </Form>
       )}
     </Formik>

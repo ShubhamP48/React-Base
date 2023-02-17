@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DynamicCrudBaseView from './BaseCrud'
 import MyModal from "../forms/MyModal";
+import { Button } from "react-bootstrap";
 
 const Users = () => {
     const columns = React.useMemo(
@@ -32,7 +33,7 @@ const Users = () => {
             {
                 Header: 'Update',
                 accessor: 'update',
-                Cell: cellObj => <MyModal title="Update entry" mainButtonText="Update" launchButtonText="Update" action={() => {handleUpdate(cellObj.row)}} />,
+                Cell: cellObj => <Button variant='secondary' onClick={() => handleUpdate(cellObj.row)}>Update</Button>,
             },
             {
                 Header: 'Delete',

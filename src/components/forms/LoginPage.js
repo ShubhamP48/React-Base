@@ -8,7 +8,7 @@ const LoginPage = () => {
             label: "Email",
             type: "email",
             classes: {
-                container: 'my-5',
+                container: 'my-15',
                 input: 'form-control',
                 label: "fw-bolder py-5"
             },

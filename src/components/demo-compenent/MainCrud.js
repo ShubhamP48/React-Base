@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import DynamicCrudBaseView from './BaseCrud'
+import MyModal from "../forms/MyModal";
+import MyComponent from "../forms/MyComponent";
 
 const Users = () => {
     const columns = React.useMemo(
@@ -32,6 +34,11 @@ const Users = () => {
                 Header: 'Update',
                 accessor: 'update',
                 Cell: cellObj => <button className="btn1" onClick={() => handleUpdate(cellObj.row)}>Update</button>,
+            },
+            {
+                Header: 'Delete',
+                accessor: 'id',
+                Cell: cellObj => <button className="btn1" onClick={() => handleDelete(cellObj.row)}>Delete</button>,
             },
             {
                 Header: 'Newsletter',
@@ -148,6 +155,27 @@ const Users = () => {
 
     return (
         <>
+        <MyModal
+        show={showModal}
+        handleClose={handleClose}
+        title={title}
+        handleDelete={handleDelete}
+        buttons={[
+          {
+            label: "Delete",
+            variant: "danger",
+          },
+          {
+            label: "Cancel",
+            variant: "primary",
+            onClick: () => console.log("Cancel clicked"),
+          },
+        ]}
+      >
+      
+      <p>Modal content goes here.</p>
+      </MyModal>
+        handleDelete={handleDelete} />
             <DynamicCrudBaseView
                 fieldDefinitions={fieldDefinitions}
                 data={dataList}

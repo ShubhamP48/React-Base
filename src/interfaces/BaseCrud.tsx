@@ -26,4 +26,5 @@ export interface BaseCrudProps {
   showForm:ShowForm,
   handleSubmit:Callback,
   handleCreate:Callback,
+  handleDelete:Callback,
 }

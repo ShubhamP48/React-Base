@@ -1,6 +1,4 @@
 import {FormEvent} from "react";
-
-
 export interface BaseFormFieldDefinitions {
     label: string;
     type: string;

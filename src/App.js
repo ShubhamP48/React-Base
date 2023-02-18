@@ -1,10 +1,8 @@
-import Users from './components/demo-compenent/MainCrud';
+import AppRouter from './router/router';
+
 function App() {
   return (
-    // <LoginPage />
-    <>
-      <Users />
-    </>
+    <AppRouter />
   );
 }
 

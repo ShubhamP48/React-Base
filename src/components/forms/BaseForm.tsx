@@ -1,16 +1,16 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { BaseFormProps } from '../../interfaces';
+import { BaseFormProps, InitialValues } from '../../interfaces';
 
-const FormBase: FC<BaseFormProps> = ({ 
+const FormBase: FC<BaseFormProps> = ({
   fieldDefinitions,
   initialValues,
   handleSubmit,
   submitBtnClass
- }) => {
+}) => {
   const validationSchema = Yup.object().shape({
-    ...fieldDefinitions.reduce((acc:any, field) => {
+    ...fieldDefinitions.reduce((acc: any, field) => {
       let validation;
       switch (field.type) {
         case "text":
@@ -39,7 +39,7 @@ const FormBase: FC<BaseFormProps> = ({
   });
 
   return (
-    <Formik
+    <Formik<InitialValues>
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
@@ -73,9 +73,9 @@ const FormBase: FC<BaseFormProps> = ({
               {errors[field.name] && <span><>{errors[field.name]}</></span>}
             </div>
           ))}
-            <div className="d-grid gap-2">
-                <button className={submitBtnClass} type="submit">Save</button>
-            </div>
+          <div className="d-grid gap-2">
+            <button className={submitBtnClass} type="submit">Save</button>
+          </div>
         </Form>
       )}
     </Formik>

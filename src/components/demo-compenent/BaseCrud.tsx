@@ -20,6 +20,7 @@ const DynamicCrudBaseView: FC<BaseCrudProps> = ({
           fieldDefinitions={fieldDefinitions}
           initialValues={formData}
           handleSubmit={handleSubmit}
+          submitBtnClass={"text-center"}
         />
       )}
       <Table

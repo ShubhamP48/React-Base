@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import { BaseFormProps } from '../../interfaces';
 
-const DynamicForm: FC<BaseFormProps> = ({ 
+const FormBase: FC<BaseFormProps> = ({ 
   fieldDefinitions,
   initialValues,
   handleSubmit,
@@ -47,8 +47,8 @@ const DynamicForm: FC<BaseFormProps> = ({
       {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
         <Form>
           {fieldDefinitions.map((field, index) => (
-            <div key={index}>
-              <label htmlFor={field.name}>{field.label}</label>
+            <div key={index} className={field.classes.container}>
+              <label className={field.classes.label} htmlFor={field.name}>{field.label}</label>
               {field.type === "checkbox" ? (
                 <Field
                   type={field.type}
@@ -57,6 +57,7 @@ const DynamicForm: FC<BaseFormProps> = ({
                   checked={values[field.name]}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  className={field.classes.input}
                 />
               ) : (
                 <Field
@@ -66,95 +67,19 @@ const DynamicForm: FC<BaseFormProps> = ({
                   value={values[field.name]}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  className={field.classes.input}
                 />
               )}
               {errors[field.name] && <span><>{errors[field.name]}</></span>}
             </div>
           ))}
-          <button type="submit">Save</button>
+            <div className="d-grid gap-2">
+                <button className={submitBtnClass} type="submit">Save</button>
+            </div>
         </Form>
       )}
     </Formik>
   );
 };
 
-export default DynamicForm;
-
-
-// import React from "react";
-// import { Formik, Form, Field } from "formik";
-
-// const renderField = (field) => {
-//   switch (field.type) {
-//     case "number":
-//       return (
-//         <input
-//           type="number"
-//           {...field}
-//           placeholder={field.name}
-//         />
-//       );
-//     case "string":
-//       return (
-//         <input
-//           type="text"
-//           {...field}
-//           placeholder={field.name}
-//         />
-//       );
-//     case "boolean":
-//       return (
-//         <input
-//           type="checkbox"
-//           {...field}
-//         />
-//       );
-//     case "date":
-//       return (
-//         <input
-//           type="date"
-//           {...field}
-//         />
-//       );
-//     case "password":
-//       return (
-//         <input
-//           type="password"
-//           {...field}
-//           placeholder={field.name}
-//         />
-//       );
-//     default:
-//       return null;
-//   }
-// };
-
-// const renderFields = (fields) =>
-//   fields.map((field) => (
-//     <div key={field.name}>
-//       <Field name={field.name}>
-//         {({ field, form }) => renderField({ ...field, form })}
-//       </Field>
-//     </div>
-//   ));
-
-// const DynamicForm = ({ fields, onSubmit }) => (
-//   <Formik
-//     initialValues={fields.reduce((acc, field) => {
-//       acc[field.name] = "";
-//       return acc;
-//     }, {})}
-//     onSubmit={onSubmit}
-//   >
-//     {({ isSubmitting }) => (
-//       <Form>
-//         {renderFields(fields)}
-//         <button type="submit" disabled={isSubmitting}>
-//           Submit
-//         </button>
-//       </Form>
-//     )}
-//   </Formik>
-// );
-
-// export default DynamicForm;
+export default FormBase;
